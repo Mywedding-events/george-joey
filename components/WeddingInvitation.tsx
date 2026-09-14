@@ -24,14 +24,157 @@ const slideChromeColors = [
   "#355983",
 ];
 
-const sections = [
-  "Welcome",
-  "Invitation",
-  "Ceremony",
-  "Registry",
-  "RSVP",
-  "Together",
-];
+type Language = "en" | "ar";
+
+const translations = {
+  en: {
+    languageSelector: "Choose language",
+    english: "English",
+    arabic: "العربية",
+    sectionsLabel: "Invitation sections",
+    sections: [
+      "Welcome",
+      "Invitation",
+      "Ceremony",
+      "Registry",
+      "RSVP",
+      "Together",
+    ],
+    startSubtitle: "Together is a beautiful place to be",
+    click: "Click",
+    toStart: "to Start",
+    gettingMarried: "Are getting married!",
+    weddingDateShort: "Saturday · September 18 · 2027",
+    countdown: ["Days", "Hours", "Mins", "Secs"],
+    scroll: "Scroll",
+    verse: "“Therefore what God has joined together, let no one separate”",
+    verseReference: "— Mark 10:9 —",
+    withFamilies: "Together with their families",
+    inviteLineOne: "Joyfully invite you to celebrate with them",
+    inviteLineTwo: "Their Big Day.",
+    weddingDateLong: "Saturday, 18 September 2027",
+    weddingDay: "Our wedding day",
+    weddingMonth: "September 2027",
+    weddingDateAria: "Wedding date: September 18, 2027",
+    groomHouse: "Groom House",
+    groomLocation: "Jbeil",
+    brideHouse: "Bride House",
+    brideLocation: "Zouk",
+    ceremony: "Wedding Ceremony",
+    venue: "Jardin de Stone",
+    ceremonyTime: "September 18 · 6 pm",
+    map: "Map",
+    party: "Celebration & Party",
+    welcomeDrink: "Welcome drink · 7:30 pm",
+    partyTime: "Party · 8:30 pm",
+    celebrate: "Celebrate with us",
+    registryTitle: "Gift Registry",
+    registryIntroOne: "Your presence is enough of a present to us!",
+    registryIntroTwo: "For those who desire, a registry is available at:",
+    account: "Personal Account",
+    phone: "Phone number",
+    copyNumber: "Copy number",
+    numberCopied: "Copied",
+    copyFailed: "Copy failed",
+    rsvpTitle: "Kindly RSVP",
+    rsvpDeadline: "Please confirm by July 1, 2027",
+    inviteeCount: "Number of invitees",
+    loadingInvitation: "Loading your invitation...",
+    guest: "Guest",
+    accept: "Accept",
+    decline: "Decline",
+    confirming: "Confirming...",
+    confirm: "Press to Confirm",
+    thankYou: "Thank you. Your response has been noted ♡",
+    noCode: "No invitation code was provided.",
+    seeYou: "See you there!",
+    goToSection: (index: number, section: string) =>
+      `Go to section ${index}: ${section}`,
+    pauseBackgroundMusic: "Pause background music",
+    playBackgroundMusic: "Play background music",
+    pauseMusic: "Pause music",
+    playMusic: "Play music",
+    codeNotFound: (code: string) => `Invitation code “${code}” was not found.`,
+    loadError: "Unable to load this invitation.",
+    submitError: "Unable to submit your RSVP.",
+    musicStartError: "Music could not start. Please tap again.",
+    musicResumeError: "Music could not resume.",
+  },
+  ar: {
+    languageSelector: "اختر اللغة",
+    english: "English",
+    arabic: "العربية",
+    sectionsLabel: "أقسام الدعوة",
+    sections: [
+      "الترحيب",
+      "الدعوة",
+      "المراسم",
+      "لائحة الهدايا",
+      "تأكيد الحضور",
+      "معًا",
+    ],
+    startSubtitle: "معًا هو أجمل مكان يمكن أن نكون فيه",
+    click: "اضغطوا",
+    toStart: "للبدء",
+    gettingMarried: "سيتزوجان!",
+    weddingDateShort: "السبت · 18 أيلول · 2027",
+    countdown: ["يوم", "ساعة", "دقيقة", "ثانية"],
+    scroll: "مرّروا",
+    verse: "«فالذي جمعه الله لا يفرّقه إنسان»",
+    verseReference: "— مرقس 10:9 —",
+    withFamilies: "مع عائلتيهما",
+    inviteLineOne: "يدعوانكم بكل فرح للاحتفال معهما",
+    inviteLineTwo: "بيومهما الكبير.",
+    weddingDateLong: "السبت، 18 أيلول 2027",
+    weddingDay: "يوم زفافنا",
+    weddingMonth: "أيلول 2027",
+    weddingDateAria: "موعد الزفاف: 18 أيلول 2027",
+    groomHouse: "منزل العريس",
+    groomLocation: "جبيل",
+    brideHouse: "منزل العروس",
+    brideLocation: "زوق",
+    ceremony: "مراسم الزفاف",
+    venue: "جاردان دو ستون",
+    ceremonyTime: "18 أيلول · الساعة 6 مساءً",
+    map: "الخريطة",
+    party: "الاحتفال والسهرة",
+    welcomeDrink: "مشروب ترحيبي · الساعة 7:30 مساءً",
+    partyTime: "السهرة · الساعة 8:30 مساءً",
+    celebrate: "احتفلوا معنا",
+    registryTitle: "لائحة الهدايا",
+    registryIntroOne: "حضوركم هو أجمل هدية لنا!",
+    registryIntroTwo: "ولمن يرغب، يمكن تقديم هدية عبر:",
+    account: "حساب شخصي",
+    phone: "رقم الهاتف",
+    copyNumber: "نسخ الرقم",
+    numberCopied: "تم النسخ",
+    copyFailed: "تعذّر النسخ",
+    rsvpTitle: "تأكيد الحضور",
+    rsvpDeadline: "يرجى التأكيد قبل 1 تموز 2027",
+    inviteeCount: "عدد المدعوين",
+    loadingInvitation: "جارٍ تحميل دعوتكم...",
+    guest: "ضيف",
+    accept: "سأحضر",
+    decline: "أعتذر",
+    confirming: "جارٍ التأكيد...",
+    confirm: "اضغطوا للتأكيد",
+    thankYou: "شكرًا لكم. تم تسجيل ردّكم ♡",
+    noCode: "لم يتم إدخال رمز الدعوة.",
+    seeYou: "نراكم هناك!",
+    goToSection: (index: number, section: string) =>
+      `الانتقال إلى القسم ${index}: ${section}`,
+    pauseBackgroundMusic: "إيقاف موسيقى الخلفية مؤقتًا",
+    playBackgroundMusic: "تشغيل موسيقى الخلفية",
+    pauseMusic: "إيقاف الموسيقى مؤقتًا",
+    playMusic: "تشغيل الموسيقى",
+    codeNotFound: (code: string) => `لم يتم العثور على رمز الدعوة «${code}».`,
+    loadError: "تعذّر تحميل هذه الدعوة.",
+    submitError: "تعذّر إرسال تأكيد حضوركم.",
+    musicStartError: "تعذّر تشغيل الموسيقى. يرجى المحاولة مجددًا.",
+    musicResumeError: "تعذّر استئناف الموسيقى.",
+  },
+} as const;
+
 const weddingDate = new Date("2027-08-27T00:00:00").getTime();
 
 type Countdown = {
@@ -56,6 +199,8 @@ type InvitationResponse = {
 
 const API_BASE_URL = "https://api.mywedding.events";
 const MUSIC_START_TIME = 20;
+const LANGUAGE_STORAGE_KEY = "wedding-language";
+const WHISH_PHONE_NUMBER = "+971 558951417";
 
 function getCountdown(): Countdown {
   const remaining = Math.max(weddingDate - Date.now(), 0);
@@ -68,6 +213,31 @@ function getCountdown(): Countdown {
     mins: pad(Math.floor((totalSeconds % 3600) / 60)),
     secs: pad(totalSeconds % 60),
   };
+}
+
+async function copyText(text: string) {
+  if (navigator.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return;
+    } catch {
+      // Fall back for browsers that expose Clipboard API but deny access.
+    }
+  }
+
+  const copyTarget = document.createElement("textarea");
+  copyTarget.value = text;
+  copyTarget.setAttribute("readonly", "");
+  copyTarget.style.position = "fixed";
+  copyTarget.style.opacity = "0";
+  document.body.appendChild(copyTarget);
+  copyTarget.select();
+
+  try {
+    if (!document.execCommand("copy")) throw new Error("Copy failed");
+  } finally {
+    copyTarget.remove();
+  }
 }
 
 function ChurchIcon({ className = "" }: { className?: string }) {
@@ -174,12 +344,53 @@ function BrideIcon({ className = "" }: { className?: string }) {
   );
 }
 
+function CopyIcon({ copied }: { copied: boolean }) {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      aria-hidden="true"
+    >
+      {copied ? (
+        <path
+          d="m3.5 8.25 2.7 2.7 6.3-6.3"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      ) : (
+        <>
+          <rect
+            x="5.25"
+            y="4.75"
+            width="7"
+            height="8"
+            rx="1.25"
+            stroke="currentColor"
+            strokeWidth="1.25"
+          />
+          <path
+            d="M10.25 4.75V3.5c0-.69-.56-1.25-1.25-1.25H3.75c-.69 0-1.25.56-1.25 1.25v6c0 .69.56 1.25 1.25 1.25h1.5"
+            stroke="currentColor"
+            strokeWidth="1.25"
+            strokeLinecap="round"
+          />
+        </>
+      )}
+    </svg>
+  );
+}
+
 const ITINERARY_VIEWBOX_WIDTH = 440;
 const ITINERARY_VIEWBOX_HEIGHT = 1000;
 const itineraryRoute =
   "M 220 24 C 270 38, 315 52, 315 115 C 315 210, 125 205, 125 310 C 125 420, 315 405, 315 520 C 315 635, 125 620, 125 750 C 125 840, 245 860, 205 910";
 
-function WeddingJourney({ id }: { id: string }) {
+function WeddingJourney({ id, language }: { id: string; language: Language }) {
+  const t = translations[language];
   const routeContainerRef = useRef<HTMLDivElement>(null);
   const routePathRef = useRef<SVGPathElement>(null);
   const heartRef = useRef<HTMLDivElement>(null);
@@ -257,19 +468,19 @@ function WeddingJourney({ id }: { id: string }) {
     <section
       id={id}
       className="relative flex min-h-svh flex-col items-center overflow-hidden px-4 pb-[110px] pt-[76px] text-center min-[390px]:px-5 min-[390px]:pb-[120px] min-[390px]:pt-24"
-      data-screen-label="03 Ceremony"
+      data-screen-label={`03 ${t.sections[2]}`}
     >
       <div className="w-full max-w-[700px]">
         <header className="relative z-10 mx-auto w-full max-w-[430px]">
           <p className="reveal text-shadow-wedding text-[12px] uppercase tracking-[0.3em] text-[var(--ink-soft)]">
-            Our wedding day
+            {t.weddingDay}
           </p>
           <h2 className="reveal text-shadow-wedding font-script mt-2 text-[clamp(48px,13vw,68px)] leading-[1.04] text-[var(--ink)]">
-            September 2027
+            {t.weddingMonth}
           </h2>
           <div
             className="reveal mx-auto mt-5 grid max-w-[330px] grid-cols-5 items-center text-[14px] tracking-[0.16em] text-[var(--ink-soft)]"
-            aria-label="Wedding date: September 18, 2027"
+            aria-label={t.weddingDateAria}
           >
             <span>25</span>
             <span>26</span>
@@ -333,33 +544,33 @@ function WeddingJourney({ id }: { id: string }) {
           <article className="reveal absolute left-0 top-[8%] z-10 w-[42%] pr-2 text-right min-[700px]:pr-8">
             <GroomIcon className="ml-auto h-9 w-9 text-[var(--ink)] drop-shadow-[0_2px_8px_rgba(30,18,10,0.45)] min-[390px]:h-10 min-[390px]:w-10" />
             <p className="text-shadow-wedding mt-2 text-[11px] uppercase tracking-[0.16em] text-[var(--ink-soft)]">
-              Groom House
+              {t.groomHouse}
             </p>
             <h3 className="text-shadow-wedding mt-1 text-[clamp(18px,4.8vw,23px)] font-semibold leading-tight text-[var(--ink)]">
-              Jbeil
+              {t.groomLocation}
             </h3>
           </article>
 
           <article className="reveal absolute right-0 top-[29%] z-10 w-[42%] pl-2 text-left min-[700px]:pl-8">
             <BrideIcon className="h-9 w-9 text-[var(--ink)] drop-shadow-[0_2px_8px_rgba(30,18,10,0.45)] min-[390px]:h-10 min-[390px]:w-10" />
             <p className="text-shadow-wedding mt-2 text-[11px] uppercase tracking-[0.16em] text-[var(--ink-soft)]">
-              Bride House
+              {t.brideHouse}
             </p>
             <h3 className="text-shadow-wedding mt-1 text-[clamp(18px,4.8vw,23px)] font-semibold leading-tight text-[var(--ink)]">
-              Zouk
+              {t.brideLocation}
             </h3>
           </article>
 
           <article className="reveal absolute left-0 top-[51%] z-10 w-[42%] pr-2 text-right min-[700px]:pr-8">
             <ChurchIcon className="ml-auto h-9 w-9 text-[var(--ink)] drop-shadow-[0_2px_8px_rgba(30,18,10,0.45)] min-[390px]:h-10 min-[390px]:w-10" />
             <p className="text-shadow-wedding mt-2 text-[11px] uppercase tracking-[0.16em] text-[var(--ink-soft)]">
-              Wedding Ceremony
+              {t.ceremony}
             </p>
             <h3 className="text-shadow-wedding mt-1 text-[clamp(18px,4.8vw,23px)] font-semibold leading-tight text-[var(--ink)]">
-              Jardin de Stone
+              {t.venue}
             </h3>
             <p className="text-shadow-wedding mt-1 text-[14px] italic text-[var(--ink-soft)]">
-              September 18 · 6 pm
+              {t.ceremonyTime}
             </p>
             <a
               className="mt-3 inline-block min-h-11 py-2 text-[13px] uppercase tracking-[0.14em] text-[var(--ink)] underline decoration-[var(--gold-line)] underline-offset-4 transition-colors hover:text-[var(--gold)]"
@@ -367,22 +578,22 @@ function WeddingJourney({ id }: { id: string }) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Map
+              {t.map}
             </a>
           </article>
 
           <article className="reveal absolute right-0 top-[74%] z-10 w-[42%] pl-2 text-left min-[700px]:pl-8">
             <CelebrationIcon className="h-9 w-9 text-[var(--ink)] drop-shadow-[0_2px_8px_rgba(30,18,10,0.45)] min-[390px]:h-10 min-[390px]:w-10" />
             <p className="text-shadow-wedding mt-2 text-[11px] uppercase tracking-[0.16em] text-[var(--ink-soft)]">
-              Celebration &amp; Party
+              {t.party}
             </p>
             <h3 className="text-shadow-wedding mt-1 text-[clamp(18px,4.8vw,23px)] font-semibold leading-tight text-[var(--ink)]">
-              Jardin de Stone
+              {t.venue}
             </h3>
             <p className="text-shadow-wedding mt-1 text-[14px] italic text-[var(--ink-soft)]">
-              Welcome drink · 7:30 pm
+              {t.welcomeDrink}
               <br />
-              Party · 8:30 pm
+              {t.partyTime}
             </p>
             <a
               className="mt-3 inline-block min-h-11 py-2 text-[13px] uppercase tracking-[0.14em] text-[var(--ink)] underline decoration-[var(--gold-line)] underline-offset-4 transition-colors hover:text-[var(--gold)]"
@@ -390,13 +601,13 @@ function WeddingJourney({ id }: { id: string }) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Map
+              {t.map}
             </a>
           </article>
 
           <div className="reveal absolute bottom-0 left-1/2 z-10">
             <p className="text-shadow-wedding -translate-x-1/2 whitespace-nowrap font-script text-[clamp(34px,9vw,48px)] text-[var(--ink)]">
-              Celebrate with us
+              {t.celebrate}
             </p>
           </div>
         </div>
@@ -440,6 +651,38 @@ function RsvpButton({
     >
       {label}
     </button>
+  );
+}
+
+function LanguageSwitcher({
+  language,
+  onChange,
+}: {
+  language: Language;
+  onChange: (language: Language) => void;
+}) {
+  const t = translations[language];
+
+  return (
+    <div
+      className="language-switcher"
+      role="group"
+      aria-label={t.languageSelector}
+      dir="ltr"
+    >
+      {(["en", "ar"] as const).map((option) => (
+        <button
+          key={option}
+          className={`language-switcher__option ${language === option ? "is-active" : ""}`}
+          type="button"
+          onClick={() => onChange(option)}
+          aria-pressed={language === option}
+          lang={option}
+        >
+          {option === "en" ? t.english : t.arabic}
+        </button>
+      ))}
+    </div>
   );
 }
 
@@ -490,6 +733,7 @@ export default function WeddingInvitation({
   imageSources: string[];
 }) {
   const slides = imageSources.length > 0 ? imageSources : fallbackSlides;
+  const [language, setLanguage] = useState<Language>("en");
   const [appReady, setAppReady] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
   const [countdown, setCountdown] = useState<Countdown>({
@@ -511,18 +755,58 @@ export default function WeddingInvitation({
   const [startOverlayVisible, setStartOverlayVisible] = useState(true);
   const [musicPlaying, setMusicPlaying] = useState(false);
   const [musicError, setMusicError] = useState("");
+  const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">(
+    "idle",
+  );
   const audioRef = useRef<HTMLAudioElement>(null);
+  const copyFeedbackTimerRef = useRef<number | null>(null);
   const lockRef = useRef(false);
   const currentRef = useRef(0);
   const touchStartRef = useRef<number | null>(null);
   const touchScrollingJourneyRef = useRef(false);
   const sectionIds = useMemo(
-    () => sections.map((_, index) => `section-${index + 1}`),
+    () => Array.from({ length: 6 }, (_, index) => `section-${index + 1}`),
     [],
   );
+  const t = translations[language];
   const activeChromeColor =
     slideChromeColors[activeSlide] ?? slideChromeColors[0] ?? "#2e5882";
   const normalizedInvitationCode = invitationCode?.trim();
+
+  useEffect(() => {
+    let savedLanguage: string | null = null;
+    try {
+      savedLanguage = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
+    } catch {
+      // The browser may block storage; language selection still works in-session.
+    }
+    const preferredLanguage = savedLanguage === "en" || savedLanguage === "ar"
+      ? savedLanguage
+      : navigator.language.toLowerCase().startsWith("ar")
+        ? "ar"
+        : "en";
+
+    setLanguage(preferredLanguage);
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.lang = language;
+    document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
+    try {
+      window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
+    } catch {
+      // Ignore blocked storage and keep the selected language for this visit.
+    }
+  }, [language]);
+
+  useEffect(
+    () => () => {
+      if (copyFeedbackTimerRef.current) {
+        window.clearTimeout(copyFeedbackTimerRef.current);
+      }
+    },
+    [],
+  );
 
   useEffect(() => {
     const controller = new AbortController();
@@ -828,7 +1112,7 @@ export default function WeddingInvitation({
     )
       .then(async (response) => {
         if (!response.ok) {
-          const fallbackMessage = `Invitation code "${normalizedInvitationCode}" was not found.`;
+          const fallbackMessage = t.codeNotFound(normalizedInvitationCode);
           const errorBody = (await response
             .json()
             .catch(() => undefined)) as { message?: string } | undefined;
@@ -856,7 +1140,7 @@ export default function WeddingInvitation({
         setInvitationError(
           error instanceof Error
             ? error.message
-            : "Unable to load this invitation.",
+            : t.loadError,
         );
       })
       .finally(() => {
@@ -864,7 +1148,7 @@ export default function WeddingInvitation({
       });
 
     return () => controller.abort();
-  }, [normalizedInvitationCode]);
+  }, [normalizedInvitationCode, t]);
 
   const selectRsvp = (inviteeId: string, value: RsvpStatus) => {
     setConfirmed(false);
@@ -885,7 +1169,7 @@ export default function WeddingInvitation({
       setExperienceStarted(true);
       window.setTimeout(() => setStartOverlayVisible(false), 900);
     } catch {
-      setMusicError("Music could not start. Please tap again.");
+      setMusicError(t.musicStartError);
     }
   };
 
@@ -897,11 +1181,29 @@ export default function WeddingInvitation({
       try {
         await audio.play();
       } catch {
-        setMusicError("Music could not resume.");
+        setMusicError(t.musicResumeError);
       }
     } else {
       audio.pause();
     }
+  };
+
+  const copyWhishNumber = async () => {
+    if (copyFeedbackTimerRef.current) {
+      window.clearTimeout(copyFeedbackTimerRef.current);
+    }
+
+    try {
+      await copyText(WHISH_PHONE_NUMBER);
+      setCopyStatus("copied");
+    } catch {
+      setCopyStatus("error");
+    }
+
+    copyFeedbackTimerRef.current = window.setTimeout(
+      () => setCopyStatus("idle"),
+      2200,
+    );
   };
 
   const submitRsvps = async () => {
@@ -932,7 +1234,7 @@ export default function WeddingInvitation({
         const errorBody = (await response.json().catch(() => undefined)) as
           | { message?: string }
           | undefined;
-        throw new Error(errorBody?.message ?? "Unable to submit your RSVP.");
+        throw new Error(errorBody?.message ?? t.submitError);
       }
 
       const updatedInvitation =
@@ -950,7 +1252,7 @@ export default function WeddingInvitation({
       setConfirmed(true);
     } catch (error) {
       setRsvpError(
-        error instanceof Error ? error.message : "Unable to submit your RSVP.",
+        error instanceof Error ? error.message : t.submitError,
       );
     } finally {
       setSubmittingRsvp(false);
@@ -958,7 +1260,11 @@ export default function WeddingInvitation({
   };
 
   return (
-    <>
+    <div
+      className={`wedding-app ${language === "ar" ? "is-arabic" : ""}`}
+      dir={language === "ar" ? "rtl" : "ltr"}
+      lang={language}
+    >
       <audio
         ref={audioRef}
         src="/uploads/_music.mp3"
@@ -991,6 +1297,8 @@ export default function WeddingInvitation({
         className="pointer-events-none fixed inset-0 z-[1] bg-[linear-gradient(180deg,rgba(44,28,18,0.30)_0%,rgba(48,30,20,0.22)_40%,rgba(40,24,16,0.34)_100%)] before:absolute before:inset-0 before:bg-[radial-gradient(130%_100%_at_50%_0%,rgba(58,38,24,0.12),transparent_45%)] after:absolute after:inset-0 after:bg-[radial-gradient(120%_120%_at_50%_120%,rgba(40,24,14,0.38),transparent_55%)]"
         aria-hidden="true"
       />
+
+      <LanguageSwitcher language={language} onChange={setLanguage} />
       <div
         className="pointer-events-none fixed inset-0 z-[1] shadow-[inset_0_0_180px_25px_rgba(30,18,10,0.32)]"
         aria-hidden="true"
@@ -1009,10 +1317,11 @@ export default function WeddingInvitation({
             <span className="start-diamond" aria-hidden="true" />
 
             <h2 id="start-title" className="start-title">
-              George <span>&amp;</span> Joey
+              {language === "ar" ? "جورج" : "George"} <span>&amp;</span>{" "}
+              {language === "ar" ? "جوي" : "Joey"}
             </h2>
             <p id="start-description" className="start-subtitle">
-              Together is a beautiful place to be
+              {t.startSubtitle}
             </p>
 
             <button
@@ -1021,8 +1330,8 @@ export default function WeddingInvitation({
               onClick={startExperience}
               autoFocus
             >
-              <span>Click</span>
-              <span>to Start</span>
+              <span>{t.click}</span>
+              <span>{t.toStart}</span>
             </button>
 
             <p className="start-error" role="status">
@@ -1038,29 +1347,29 @@ export default function WeddingInvitation({
         <section
           id={sectionIds[0]}
           className="relative flex min-h-svh flex-col items-center justify-center px-7 pb-[120px] pt-24 text-center"
-          data-screen-label="01 Welcome"
+          data-screen-label={`01 ${t.sections[0]}`}
         >
           <div className="w-full max-w-[430px]">
             <h1 className="reveal text-shadow-wedding font-script my-[0.12em] pb-[0.08em] text-[clamp(58px,16vw,88px)] leading-[1.08] text-[var(--ink)]">
-              George
+              {language === "ar" ? "جورج" : "George"}
               <br />
               &amp;
               <br />
-              Joey
+              {language === "ar" ? "جوي" : "Joey"}
             </h1>
             <p className="reveal text-shadow-wedding font-serif-wedding text-[clamp(22px,6vw,30px)] italic leading-tight text-(--ink)">
-              Are getting married!
+              {t.gettingMarried}
             </p>
             <div className="wedding-rule reveal" />
             <p className="reveal text-shadow-wedding text-[15px] uppercase tracking-[0.18em] text-[var(--ink-soft)]">
-              Saturday · September 18 · 2027
+              {t.weddingDateShort}
             </p>
             <div className="reveal mt-[34px] flex justify-center gap-3.5">
               {[
-                ["Days", countdown.days],
-                ["Hours", countdown.hours],
-                ["Mins", countdown.mins],
-                ["Secs", countdown.secs],
+                [t.countdown[0], countdown.days],
+                [t.countdown[1], countdown.hours],
+                [t.countdown[2], countdown.mins],
+                [t.countdown[3], countdown.secs],
               ].map(([label, value]) => (
                 <div
                   key={label}
@@ -1086,7 +1395,7 @@ export default function WeddingInvitation({
             }
           >
             <span className="text-[13px] uppercase tracking-[0.3em]">
-              Scroll
+              {t.scroll}
             </span>
             <svg
               className="animate-bob"
@@ -1109,56 +1418,56 @@ export default function WeddingInvitation({
         <section
           id={sectionIds[1]}
           className="flex min-h-svh flex-col items-center justify-center px-7 pb-[120px] pt-24 text-center"
-          data-screen-label="02 Invitation"
+          data-screen-label={`02 ${t.sections[1]}`}
         >
           <div className="w-full max-w-[430px]">
             <CrossIcon className="reveal mx-auto mb-5 h-10 w-8 text-[var(--gold)] drop-shadow-[0_2px_8px_rgba(30,18,10,0.45)]" />
             <p className="reveal text-shadow-wedding text-[clamp(19px,5.2vw,22px)] italic leading-[1.7] text-[var(--ink)]">
-              &quot;Therefore what God has joined together, let no one separate&quot;
+              {t.verse}
             </p>
             <p className="reveal text-shadow-wedding mt-2.5 text-[15px] tracking-[0.16em] text-[var(--ink-soft)]">
-              — Mark 10:9 —
+              {t.verseReference}
             </p>
             <div className="wedding-rule reveal" />
             <p className="reveal text-shadow-wedding font-script text-[clamp(42px,11vw,58px)] leading-[1.05] text-(--ink)">
-              George
+              {language === "ar" ? "جورج" : "George"}
               <br />
               &amp; 
               <br />
-              Joey
+              {language === "ar" ? "جوي" : "Joey"}
             </p>
             <p className="reveal text-shadow-wedding text-[clamp(18px,4.8vw,21px)] font-semibold leading-[1.75] text-[var(--ink)]">
-              Together with their families
+              {t.withFamilies}
             </p>
             <p className="reveal text-shadow-wedding text-[clamp(18px,4.8vw,21px)] leading-[1.75] text-[var(--ink)]">
-              Joyfully invite you to celebrate with them <br /> Their Big Day.
+              {t.inviteLineOne} <br /> {t.inviteLineTwo}
             </p>
             <p className="reveal text-shadow-wedding text-[clamp(18px,4.8vw,21px)] leading-[1.75] text-[var(--ink)]">
-              Saturday, 18 September 2027
+              {t.weddingDateLong}
             </p>
           </div>
         </section>
 
-        <WeddingJourney id={sectionIds[2]} />
+        <WeddingJourney id={sectionIds[2]} language={language} />
 
         <section
           id={sectionIds[3]}
           className="flex min-h-svh flex-col items-center justify-center px-7 py-12 text-center min-[390px]:pb-[120px] min-[390px]:pt-24 max-[380px]:px-5 max-[380px]:py-8 max-[380px]:min-h-dvh"
-          data-screen-label="04 Registry"
+          data-screen-label={`04 ${t.sections[3]}`}
         >
           <div className="flex w-full max-w-[430px] flex-col items-center">
             <h2 className="reveal text-shadow-wedding font-script text-[clamp(42px,12vw,64px)] leading-[1.04] text-(--ink)">
-              Gift Registry
+              {t.registryTitle}
             </h2>
             <div className="wedding-rule reveal my-4 max-[380px]:my-3" />
             <div className="reveal relative w-full overflow-hidden rounded-[3px] border border-(--gold-line) bg-[rgba(76,49,33,0.42)] px-5 py-6 shadow-[0_16px_48px_rgba(24,14,8,0.3)] backdrop-blur-[2px] before:pointer-events-none before:absolute before:inset-[6px] before:border before:border-[rgba(252,246,238,0.16)] min-[390px]:px-6 min-[390px]:py-7 max-[380px]:px-4 max-[380px]:py-5">
               <p className="relative text-shadow-wedding text-[clamp(17px,4.6vw,21px)] italic leading-[1.55] text-(--ink) min-[390px]:leading-[1.75]">
-                Your presence is enough of a present to us!
+                {t.registryIntroOne}
                 <br />
-                For those who desire, a registry is available at:
+                {t.registryIntroTwo}
               </p>
               <div className="wedding-rule relative my-4 min-[390px]:my-5" />
-              <div className="relative text-shadow-wedding">
+              <div className="relative text-shadow-wedding" dir="ltr">
                 <div className="mb-1.5 text-[clamp(19px,5vw,22px)] font-semibold tracking-[0.06em] text-(--ink) min-[390px]:mb-2">
                   UAE Emirates NBD
                 </div>
@@ -1177,9 +1486,32 @@ export default function WeddingInvitation({
                 <div className="mb-1.5 text-[clamp(19px,5vw,22px)] font-semibold tracking-[0.06em] text-(--ink) min-[390px]:mb-2">
                   Whish Money
                 </div>
-                <p className="font-registry-numbers whitespace-pre-line text-[clamp(15px,4vw,17px)] leading-7 tracking-[0.04em] text-(--ink) min-[390px]:leading-8">
-                  Personal Account{`\n`}Phone number: +971 558951417
+                <p className="font-registry-numbers text-[clamp(15px,4vw,17px)] leading-7 tracking-[0.04em] text-(--ink) min-[390px]:leading-8">
+                  {t.account}
+                  <br />
+                  {t.phone}: <span dir="ltr">{WHISH_PHONE_NUMBER}</span>
                 </p>
+                <button
+                  className={`mt-3 inline-flex min-h-10 min-w-[126px] cursor-pointer items-center justify-center gap-2 rounded-full border px-4 py-2 font-serif-wedding text-[12px] font-semibold uppercase tracking-[0.1em] shadow-[0_5px_16px_rgba(24,14,8,0.18)] transition duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ink)] active:scale-[0.97] ${
+                    copyStatus === "copied"
+                      ? "border-transparent bg-[var(--gold)] text-[#3a2615]"
+                      : copyStatus === "error"
+                        ? "border-[rgba(252,246,238,0.7)] bg-white/[0.12] text-[var(--ink)]"
+                        : "border-[var(--gold-line)] bg-white/[0.06] text-[var(--ink)] hover:border-[var(--gold)] hover:bg-white/[0.12]"
+                  }`}
+                  type="button"
+                  onClick={copyWhishNumber}
+                  aria-live="polite"
+                >
+                  <CopyIcon copied={copyStatus === "copied"} />
+                  <span>
+                    {copyStatus === "copied"
+                      ? t.numberCopied
+                      : copyStatus === "error"
+                        ? t.copyFailed
+                        : t.copyNumber}
+                  </span>
+                </button>
               </div>
             </div>
           </div>
@@ -1188,25 +1520,25 @@ export default function WeddingInvitation({
         <section
           id={sectionIds[4]}
           className="flex min-h-svh flex-col items-center justify-center px-7 pb-[120px] pt-24 text-center"
-          data-screen-label="05 RSVP"
+          data-screen-label={`05 ${t.sections[4]}`}
         >
           <div className="w-full max-w-[430px]">
             <h2 className="reveal text-shadow-wedding font-script text-[clamp(46px,13vw,64px)] leading-[1.04] text-[var(--ink)]">
-              Kindly RSVP
+              {t.rsvpTitle}
             </h2>
             <p className="reveal text-shadow-wedding mt-1.5 text-[15px] tracking-[0.14em] text-[var(--ink-soft)]">
-              Please confirm by July 1, 2027
+              {t.rsvpDeadline}
             </p>
             <div className="wedding-rule reveal" />
             <p className="reveal text-shadow-wedding my-1.5 mb-[18px] text-[17px] tracking-[0.04em] text-[var(--ink-soft)]">
-              Number of invitees:{" "}
+              {t.inviteeCount}:{" "}
               <b className="font-semibold text-[var(--ink)]">
                 {invitees.length}
               </b>
             </p>
             {invitationLoading ? (
               <p className="reveal text-shadow-wedding text-[17px] italic text-[var(--ink-soft)]">
-                Loading your invitation...
+                {t.loadingInvitation}
               </p>
             ) : invitationError ? (
               <p className="reveal text-shadow-wedding text-[17px] italic text-[var(--ink-soft)]">
@@ -1218,20 +1550,20 @@ export default function WeddingInvitation({
                   {invitees.map((invitee) => (
                     <div
                       key={invitee.id}
-                      className="flex items-center justify-between gap-3 border-y border-[rgba(252,246,238,0.16)] py-3 text-left"
+                      className="flex items-center justify-between gap-3 border-y border-[rgba(252,246,238,0.16)] py-3 text-start"
                     >
                       <span className="text-shadow-wedding text-[19px] text-[var(--ink)]">
-                        {invitee.fullName ?? "Guest"}
+                        {invitee.fullName ?? t.guest}
                       </span>
                       <div className="flex gap-2">
                         <RsvpButton
-                          label="Accept"
+                          label={t.accept}
                           variant="accept"
                           active={rsvps[invitee.id] === "accepted"}
                           onClick={() => selectRsvp(invitee.id, "accepted")}
                         />
                         <RsvpButton
-                          label="Decline"
+                          label={t.decline}
                           variant="decline"
                           active={rsvps[invitee.id] === "rejected"}
                           onClick={() => selectRsvp(invitee.id, "rejected")}
@@ -1246,7 +1578,7 @@ export default function WeddingInvitation({
                   onClick={submitRsvps}
                   disabled={submittingRsvp}
                 >
-                  {submittingRsvp ? "Confirming..." : "Press to Confirm"}
+                  {submittingRsvp ? t.confirming : t.confirm}
                 </button>
                 {rsvpError ? (
                   <p className="text-shadow-wedding mt-5 min-h-6 text-lg italic text-[var(--ink-soft)]">
@@ -1256,13 +1588,13 @@ export default function WeddingInvitation({
                   <p
                     className={`text-shadow-wedding mt-5 min-h-6 text-lg italic text-[var(--gold)] transition-opacity duration-500 ${confirmed ? "opacity-100" : "opacity-0"}`}
                   >
-                    Thank you. Your response has been noted ♡
+                    {t.thankYou}
                   </p>
                 )}
               </>
             ) : (
               <p className="reveal text-shadow-wedding text-[17px] italic text-[var(--ink-soft)]">
-                No invitation code was provided.
+                {t.noCode}
               </p>
             )}
           </div>
@@ -1271,11 +1603,11 @@ export default function WeddingInvitation({
         <section
           id={sectionIds[5]}
           className="flex min-h-svh flex-col items-center justify-center px-7 pb-[120px] pt-24 text-center"
-          data-screen-label="06 Together"
+          data-screen-label={`06 ${t.sections[5]}`}
         >
           <div className="flex w-full max-w-[430px] flex-col items-center">
             <h2 className="reveal text-shadow-wedding font-script text-[clamp(46px,13vw,62px)] leading-[1.04] text-[var(--ink)]">
-              See you there!
+              {t.seeYou}
             </h2>
           </div>
         </section>
@@ -1283,11 +1615,11 @@ export default function WeddingInvitation({
 
       <nav
         className="fixed right-[18px] top-1/2 z-30 flex -translate-y-1/2 flex-col gap-[13px]"
-        aria-label="Invitation sections"
+        aria-label={t.sectionsLabel}
       >
-        {sections.map((section, index) => (
+        {t.sections.map((section, index) => (
           <button
-            key={section}
+            key={index}
             data-dot
             data-index={index}
             className={`h-[9px] w-[9px] cursor-pointer rounded-full border p-0 transition duration-300 ${
@@ -1296,7 +1628,7 @@ export default function WeddingInvitation({
                 : "border-[rgba(252,246,238,0.7)] bg-transparent"
             }`}
             type="button"
-            aria-label={`Go to section ${index + 1}: ${section}`}
+            aria-label={t.goToSection(index + 1, section)}
           />
         ))}
       </nav>
@@ -1306,8 +1638,10 @@ export default function WeddingInvitation({
           className="fixed left-[18px] top-[18px] z-30 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-[var(--gold-line)] bg-[rgba(35,23,16,0.34)] text-[var(--ink)] shadow-[0_5px_20px_rgba(20,12,8,0.2)] backdrop-blur-sm transition duration-300 hover:border-[var(--ink)] hover:bg-[rgba(35,23,16,0.5)] active:scale-95"
           type="button"
           onClick={toggleMusic}
-          aria-label={musicPlaying ? "Pause background music" : "Play background music"}
-          title={musicPlaying ? "Pause music" : "Play music"}
+          aria-label={
+            musicPlaying ? t.pauseBackgroundMusic : t.playBackgroundMusic
+          }
+          title={musicPlaying ? t.pauseMusic : t.playMusic}
         >
           {musicPlaying ? (
             <svg width="17" height="17" viewBox="0 0 20 20" fill="none" aria-hidden="true">
@@ -1323,6 +1657,6 @@ export default function WeddingInvitation({
         </button>
       )}
 
-    </>
+    </div>
   );
 }

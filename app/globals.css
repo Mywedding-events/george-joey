@@ -3,6 +3,8 @@
 :root {
   --script: "Great Vibes", cursive;
   --serif: "Cormorant Garamond", Georgia, serif;
+  --arabic-serif: "Noto Naskh Arabic", "Tahoma", serif;
+  --arabic-display: "Aref Ruqaa", "Noto Naskh Arabic", serif;
   --registry-number-serif: "Libre Baskerville", Georgia, serif;
   --cream: #fbf3e9;
   --ink: #fcf6ee;
@@ -34,6 +36,95 @@ body {
 button,
 a {
   -webkit-tap-highlight-color: transparent;
+}
+
+.wedding-app {
+  min-height: 100svh;
+}
+
+.wedding-app.is-arabic {
+  color: var(--ink);
+  font-family: var(--arabic-serif);
+}
+
+.is-arabic .font-serif-wedding,
+.is-arabic .start-button {
+  font-family: var(--arabic-serif);
+}
+
+.is-arabic .font-script,
+.is-arabic .start-title {
+  color: var(--ink);
+  font-family: var(--arabic-display);
+  font-weight: 400;
+  line-height: 1.35;
+  -webkit-text-fill-color: var(--ink);
+}
+
+.is-arabic .start-title span {
+  color: var(--gold);
+  -webkit-text-fill-color: var(--gold);
+}
+
+.is-arabic .text-shadow-wedding,
+.is-arabic .start-title,
+.is-arabic .start-subtitle,
+.is-arabic .start-button {
+  text-shadow:
+    0 1px 18px rgba(0, 0, 0, 0.52),
+    0 1px 3px rgba(0, 0, 0, 0.48);
+}
+
+.is-arabic [class*="tracking-"] {
+  letter-spacing: 0;
+}
+
+.language-switcher {
+  position: fixed;
+  top: max(16px, env(safe-area-inset-top));
+  right: max(16px, env(safe-area-inset-right));
+  z-index: 120;
+  display: flex;
+  overflow: hidden;
+  padding: 3px;
+  border: 1px solid var(--gold-line);
+  border-radius: 999px;
+  background: rgba(35, 23, 16, 0.46);
+  box-shadow: 0 5px 20px rgba(20, 12, 8, 0.2);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.language-switcher__option {
+  min-height: 32px;
+  padding: 4px 11px;
+  cursor: pointer;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink-soft);
+  font-family: var(--serif);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  transition:
+    color 0.25s ease,
+    background 0.25s ease;
+}
+
+.language-switcher__option[lang="ar"] {
+  font-family: var(--arabic-serif);
+  font-size: 14px;
+}
+
+.language-switcher__option.is-active {
+  background: var(--gold);
+  color: #3a2615;
+}
+
+.language-switcher__option:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
 }
 
 .text-shadow-wedding {
