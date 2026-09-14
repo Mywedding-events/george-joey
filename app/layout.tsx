@@ -38,15 +38,13 @@ function getCoverImage() {
 }
 
 function getSiteUrl() {
-  // The site is served from the ramyrachelle subdomain. metadataBase must match
-  // the real host, otherwise Open Graph images resolve to an absolute URL on
-  // the wrong domain (the apex) and chat crawlers like WhatsApp fail to
-  // download the preview image. NEXT_PUBLIC_SITE_URL can override this.
+  // metadataBase must match the real host so chat crawlers can resolve the
+  // Open Graph image. NEXT_PUBLIC_SITE_URL can override this.
   const configuredUrl =
     process.env.NEXT_PUBLIC_SITE_URL ??
     process.env.VERCEL_PROJECT_PRODUCTION_URL ??
     process.env.VERCEL_URL ??
-    "https://ramyrachelle.mywedding.events";
+    "https://georgejoey.mywedding.events";
 
   return new URL(
     configuredUrl.startsWith("http") ? configuredUrl : `https://${configuredUrl}`,
@@ -63,33 +61,33 @@ const previewImage = {
   url: coverImageUrl,
   width: 1200,
   height: 630,
-  alt: "Ramy and Rachelle wedding invitation",
+  alt: "George and Joey wedding invitation",
   type: coverImage.type,
 };
 
 export const metadata: Metadata = {
   metadataBase: siteUrl,
-  title: "Ramy & Rachelle - Wedding Invitation",
+  title: "George & Joey - Wedding Invitation",
   description:
-    "Wedding invitation for Ramy and Rachelle on Friday, August 27, 2027.",
+    "Wedding invitation for George and Joey on Friday, August 27, 2027.",
   alternates: {
     canonical: siteUrl,
   },
   openGraph: {
-    title: "Ramy & Rachelle - Wedding Invitation",
+    title: "George & Joey - Wedding Invitation",
     description:
-      "Wedding invitation for Ramy and Rachelle on Friday, August 27, 2027.",
+      "Wedding invitation for George and Joey on Friday, August 27, 2027.",
     url: siteUrl.toString(),
-    siteName: "Ramy & Rachelle Wedding Invitation",
+    siteName: "George & Joey Wedding Invitation",
     type: "website",
     locale: "en_US",
     images: [previewImage],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ramy & Rachelle - Wedding Invitation",
+    title: "George & Joey - Wedding Invitation",
     description:
-      "Wedding invitation for Ramy and Rachelle on Friday, August 27, 2027.",
+      "Wedding invitation for George and Joey on Friday, August 27, 2027.",
     images: [previewImage],
   },
 };
