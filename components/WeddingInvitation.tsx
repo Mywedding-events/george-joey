@@ -1318,7 +1318,7 @@ export default function WeddingInvitation({
 
             <h2 id="start-title" className="start-title">
               {language === "ar" ? "جورج" : "George"} <span>&amp;</span>{" "}
-              {language === "ar" ? "جوي" : "Joey"}
+              {language === "ar" ? "جووي" : "Joey"}
             </h2>
             <p id="start-description" className="start-subtitle">
               {t.startSubtitle}
@@ -1355,7 +1355,7 @@ export default function WeddingInvitation({
               <br />
               &amp;
               <br />
-              {language === "ar" ? "جوي" : "Joey"}
+              {language === "ar" ? "جووي" : "Joey"}
             </h1>
             <p className="reveal text-shadow-wedding font-serif-wedding text-[clamp(22px,6vw,30px)] italic leading-tight text-(--ink)">
               {t.gettingMarried}
@@ -1434,7 +1434,7 @@ export default function WeddingInvitation({
               <br />
               &amp; 
               <br />
-              {language === "ar" ? "جوي" : "Joey"}
+              {language === "ar" ? "جووي" : "Joey"}
             </p>
             <p className="reveal text-shadow-wedding text-[clamp(18px,4.8vw,21px)] font-semibold leading-[1.75] text-[var(--ink)]">
               {t.withFamilies}
