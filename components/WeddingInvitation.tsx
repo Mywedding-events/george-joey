@@ -264,11 +264,11 @@ function WeddingJourney({ id }: { id: string }) {
             Our wedding day
           </p>
           <h2 className="reveal text-shadow-wedding font-script mt-2 text-[clamp(48px,13vw,68px)] leading-[1.04] text-[var(--ink)]">
-            August 2027
+            September 2027
           </h2>
           <div
             className="reveal mx-auto mt-5 grid max-w-[330px] grid-cols-5 items-center text-[14px] tracking-[0.16em] text-[var(--ink-soft)]"
-            aria-label="Wedding date: August 27, 2027"
+            aria-label="Wedding date: September 18, 2027"
           >
             <span>25</span>
             <span>26</span>
@@ -358,7 +358,7 @@ function WeddingJourney({ id }: { id: string }) {
               Jardin de Stone
             </h3>
             <p className="text-shadow-wedding mt-1 text-[14px] italic text-[var(--ink-soft)]">
-              August 27 · 6 pm
+              September 18 · 6 pm
             </p>
             <a
               className="mt-3 inline-block min-h-11 py-2 text-[13px] uppercase tracking-[0.14em] text-[var(--ink)] underline decoration-[var(--gold-line)] underline-offset-4 transition-colors hover:text-[var(--gold)]"
@@ -968,7 +968,7 @@ export default function WeddingInvitation({
             </p>
             <div className="wedding-rule reveal" />
             <p className="reveal text-shadow-wedding text-[15px] uppercase tracking-[0.18em] text-[var(--ink-soft)]">
-              Friday · August 27 · 2027
+              Friday · September 18 · 2027
             </p>
             <div className="reveal mt-[34px] flex justify-center gap-3.5">
               {[
@@ -1049,7 +1049,7 @@ export default function WeddingInvitation({
               Joyfully invite you to celebrate with them <br /> Their Big Day.
             </p>
             <p className="reveal text-shadow-wedding text-[clamp(18px,4.8vw,21px)] leading-[1.75] text-[var(--ink)]">
-              Friday, 27 August 2027
+              Friday, 18 September 2027
             </p>
           </div>
         </section>
