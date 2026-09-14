@@ -1053,7 +1053,7 @@ export default function WeddingInvitation({
             </p>
             <div className="wedding-rule reveal" />
             <p className="reveal text-shadow-wedding text-[15px] uppercase tracking-[0.18em] text-[var(--ink-soft)]">
-              Friday · September 18 · 2027
+              Saturday · September 18 · 2027
             </p>
             <div className="reveal mt-[34px] flex justify-center gap-3.5">
               {[
@@ -1134,7 +1134,7 @@ export default function WeddingInvitation({
               Joyfully invite you to celebrate with them <br /> Their Big Day.
             </p>
             <p className="reveal text-shadow-wedding text-[clamp(18px,4.8vw,21px)] leading-[1.75] text-[var(--ink)]">
-              Friday, 18 September 2027
+              Saturday, 18 September 2027
             </p>
           </div>
         </section>
